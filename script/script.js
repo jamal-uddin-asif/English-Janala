@@ -159,3 +159,26 @@ const lodingFun = (value) =>{
 
  }
 }
+
+
+
+// search functionality 
+document.getElementById('btn-search').addEventListener('click',()=>{
+  const inputValue = document.getElementById('search-input').value.trim().toLowerCase()
+
+  fetch('https://openapi.programming-hero.com/api/words/all')
+  .then(res => res.json())
+  .then(data => {
+    const allWords = data.data;
+    const filterWords = allWords.filter(obj => obj.word.includes(inputValue))
+    displayCard(filterWords)
+  })
+})
+
+
+
+
+
+
+
+
