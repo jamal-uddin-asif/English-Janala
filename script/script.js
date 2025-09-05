@@ -76,7 +76,7 @@ const displayCard = (array) =>{
 
           <div class="flex justify-between w-10/12 mx-auto">
             <button id="" onclick="loadWordDetails(${object.id})" class="bg-[#1A91FF1A] p-3 rounded-lg hover:bg-[#422AD2] hover:text-white"><i class="fa-solid fa-circle-info"></i></button>
-            <button onclick="my_modal_5.showModal()" class="bg-[#1A91FF1A] p-3 rounded-lg hover:bg-[#422AD2] hover:text-white"><i class="fa-solid fa-volume-high"></i></button>
+            <button onclick="pronounceWord('${object.word}')" class="bg-[#1A91FF1A] p-3 rounded-lg hover:bg-[#422AD2] hover:text-white"><i class="fa-solid fa-volume-high"></i></button>
           </div>
         </div>
             
@@ -176,7 +176,12 @@ document.getElementById('btn-search').addEventListener('click',()=>{
 })
 
 
-
+// Speak vocabularies 
+function pronounceWord(word) {
+  const utterance = new SpeechSynthesisUtterance(word);
+  utterance.lang = "en-EN"; // English
+  window.speechSynthesis.speak(utterance);
+}
 
 
 
